@@ -11,7 +11,6 @@
  *
  */
 #include <avr/io.h>
-#include "timer.h"
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
@@ -117,15 +116,11 @@ int main(void) {
     DDRB = 0xFF; PORTB = 0x00;
 
     /* Insert your solution below */
-    TimerSet(200);
-    TimerOn();
     PWM_on();
     state = Start;
 
     while(1) {
         Tick();
-        while (!TimerFlag);
-        TimerFlag = 0;
     }
     return 1;
 }
